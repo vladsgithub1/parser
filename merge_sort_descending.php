@@ -21,12 +21,12 @@ function merge(&$A, $p, $q, $r)
     for ($j = 1; $j <= $n2; $j++) {
         $R[$j] = $A[$q + $j];
     }
-    $L[$nl + 1] = 10000000;
-    $R[$n2 + 1] = 10000000;
+    $L[$nl + 1] = -10000000; // -INF
+    $R[$n2 + 1] = -10000000; // -INF
     $i = 1;
     $j = 1;
     for ($k = $p; $k <= $r; $k++ ) {
-        if ($L[$i] <= $R[$j]) {
+        if ($L[$i] >= $R[$j]) {
             $A[$k] = $L[$i];
             $i++;
         } else {
@@ -51,4 +51,4 @@ function mergeSort(&$A, $p, $r) {
 }
 
 mergeSort( $A, 0, count($A) - 1);
-echo json_encode($A);
+echo json_encode($A) . PHP_EOL;
